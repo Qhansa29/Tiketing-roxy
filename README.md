@@ -1,58 +1,107 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistem Antrian Infinix Roxy Mas
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi antrian berbasis web menggunakan Laravel (arsitektur MVC).
 
-## About Laravel
+## 1. Kebutuhan Sistem
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Gunakan versi berikut agar setup paling aman dan minim error:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. XAMPP 8.3.x (disarankan 8.3.12 atau lebih baru)
+2. PHP 8.3.x
+3. MySQL/MariaDB dari XAMPP
+4. Composer 2.x
+5. Git 2.x
+6. Node.js 20.x atau 22.x (opsional, jika ingin jalankan Vite frontend)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Catatan:
 
-## Learning Laravel
+1. Tidak wajib install Laravel global.
+2. Laravel sudah ikut sebagai dependency project dan dijalankan via Composer.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 2. Akses Aplikasi dan User Default
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Setelah setup selesai, akses:
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+1. Halaman pelanggan: http://127.0.0.1:8000
+2. Login admin: http://127.0.0.1:8000/admin/login
 
-## Agentic Development
+User admin default dari seeder:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+1. Email: admin@infinix-roxy.local
+2. Password: Admin12345!
 
-```bash
-composer require laravel/boost --dev
+## 3. Cara Install dari Repo (Clone)
 
-php artisan boost:install
-```
+Jalankan di terminal:
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+1. git clone https://github.com/Qhansa29/Tiketing-roxy.git
+2. cd Tiketing-roxy/app
+3. composer install
+4. copy .env.example .env (Windows) atau cp .env.example .env (Linux/macOS)
+5. php artisan key:generate
 
-## Contributing
+Lalu atur koneksi database di file .env:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. DB_CONNECTION=mysql
+2. DB_HOST=127.0.0.1
+3. DB_PORT=3306
+4. DB_DATABASE=db_antrian_infinix
+5. DB_USERNAME=root
+6. DB_PASSWORD=
 
-## Code of Conduct
+## 4. Cara Buat DB dan Import SQL Export
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Project sudah menyediakan dump database di:
 
-## Security Vulnerabilities
+1. database/exports/db_antrian_infinix.sql
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Langkah import via phpMyAdmin:
 
-## License
+1. Buat database bernama db_antrian_infinix
+2. Buka phpMyAdmin
+3. Pilih database db_antrian_infinix
+4. Klik tab Import
+5. Pilih file database/exports/db_antrian_infinix.sql
+6. Klik Go/Import
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Alternatif import via CLI:
+
+1. mysql -h 127.0.0.1 -P 3306 -u root db_antrian_infinix < database/exports/db_antrian_infinix.sql
+
+## 5. Jalankan Aplikasi
+
+Pilihan A (disarankan):
+
+1. cd app
+2. php artisan serve
+3. Buka URL yang muncul (default http://127.0.0.1:8000)
+
+Pilihan B (Apache XAMPP):
+
+1. Pastikan Apache aktif
+2. Akses ke folder public app sesuai konfigurasi virtual host atau path lokal Anda
+
+## 6. Opsional Frontend Dev Server
+
+Jika ingin jalankan Vite hot reload:
+
+1. npm install
+2. npm run dev
+
+## 7. Sinkronisasi Repo (Remote ke Local)
+
+Ambil update terbaru dari GitHub:
+
+1. git pull origin main
+
+Kirim perubahan dari local ke GitHub:
+
+1. git add .
+2. git commit -m "pesan perubahan"
+3. git push origin main
+
+## 8. Catatan Penting
+
+1. File .env tidak ikut ke Git, jadi wajib set ulang di setiap laptop.
+2. Jika config tidak terbaca setelah ubah .env, jalankan: php artisan config:clear
+3. Jika ada perubahan struktur DB, jalankan migration terbaru: php artisan migrate
