@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'whatsapp' => [
+        'enabled' => env('WHATSAPP_ENABLED', false),
+        'fonnte_token' => env('WHATSAPP_FONNTE_TOKEN'),
+    ],
+
 ];
